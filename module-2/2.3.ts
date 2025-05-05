@@ -85,5 +85,48 @@
   };
   // console.log(richDev, poorDev);
 
+  // Generics can also be used with Function.
+
+  const createUserWithGenerics = <T>(user: T): T[] => {
+    return [user]; // return type is T[] means that the function will return an array of type T.
+  };
+
+  const res1 = createUserWithGenerics<string>("Rafsan");
+  console.log(res1); // ["Rafsan"]
+
+  interface User {
+    id: number;
+    name: string;
+  }
+
+  const resObj = createUserWithGenerics<{ User }>({
+    id: 1,
+    name: "Rafsan",
+  });
+
+  console.log(resObj); // [{ id: 1, name: "Rafsan" }]
+
+  const addToCourseStudent = <T>(student: T) => {
+    const course = "Developer Course";
+
+    return {
+      ...student,
+      course,
+    };
+  };
+
+  const student1 = addToCourseStudent({
+    id: 1,
+    name: "Rafsan",
+  });
+  const student2 = addToCourseStudent({
+    id: 2,
+    name: "Ahmed",
+    smartWatch: "Apple Watch",
+  });
+
+  console.log(student1); // { id: 1, name: "Rafsan", course: "Developer Course" }
+  console.log(student2); // { id: 2, name: "Ahmed", smartWatch: "Apple Watch", course: "Developer Course" }
+
   //
 }
