@@ -27,5 +27,19 @@
     // email: "ahmed@gmail.com",
     smartWatch: "Apple Watch",
   });
+
+  // using keyof operator to get the keys of the object.
+  const getProperty = <T, K extends keyof T>(obj: T, key: K) => {
+    return obj[key]; // return type is T[K] means that the function will return the type of the key of the object.
+  };
+
+  const car = {
+    brand: "BMW",
+    model: "X5",
+    price: 50000,
+  };
+
+  const carBrand = getProperty(car, "brand"); // carBrand is of type string
+  console.log(carBrand); // BMW
   //
 }
